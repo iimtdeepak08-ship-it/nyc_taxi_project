@@ -1,8 +1,15 @@
-# Databricks notebook source
-# DBTITLE 1,Cell 1
-from pyspark.sql.functions import col, when, months_between, expr
+import sys
+import os
+# Go two levels up to reach the project root
+project_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+from pyspark.sql.functions import col, when, timestamp_diff
 from datetime import date
 from dateutil.relativedelta import relativedelta
+from modules.utils.date_utils import get_month_start_n_months_ago
 
 # COMMAND ----------
 
